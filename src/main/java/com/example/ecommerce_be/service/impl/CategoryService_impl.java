@@ -33,6 +33,7 @@ public class CategoryService_impl implements CategoryService {
     @Override
     @Transactional
     public CategoryDTO addNewCategory(CategoryDTO categoryDTO) {
+        // Hởi đã ghé qua đây
         Category category = categoryMapper.toEntity(categoryDTO);
         category.setCategoryCode(categoryDTO.getCategoryCode());
         category.setCategoryName(categoryDTO.getCategoryName());
