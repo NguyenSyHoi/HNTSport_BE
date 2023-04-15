@@ -53,8 +53,7 @@ public class CategoryService_impl implements CategoryService {
             throw new NotFoundException("Category not found");
         }
     }
-
-
+    
     public Optional<Category> checkExistCategory(Long id) {
         return categoryRepository.getCategoryById(id);
     }
