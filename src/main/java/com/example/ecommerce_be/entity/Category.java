@@ -22,14 +22,14 @@ public class Category {
     @Column(nullable = false)
     private String categoryName;
 
-    @Column(nullable = false)
-    private String description;
+//    @Column(nullable = false)
+//    private String description;
 
-    @Column(nullable = false)
-    private String status;
+//    @Column(nullable = false)
+    //private String status;
 
-    private Date createdDate;
-    private Date updatedDate;
-    private String createdBy;
-    private String updatedBy;
+//    private Date createdDate;
+//    private Date updatedDate;
+//    private String createdBy;
+//    private String updatedBy;
 }

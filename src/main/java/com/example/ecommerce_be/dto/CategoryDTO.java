@@ -6,6 +6,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,15 +18,15 @@ public class CategoryDTO {
 
     private String categoryName;
 
-    private String description;
+    //private String description;
 
-    private String status;
+   // private String status;
 
-    private Date createdDate;
+    //private Date createdDate;
 
-    private Date updatedDate;
+   // private Date updatedDate;
 
-    private String createdBy;
+    //private String createdBy;
 
-    private String updatedBy;
+    //private String updatedBy;
 }

@@ -12,13 +12,13 @@ import java.util.Optional;
 
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long> {
-    @Query(value = "select c.* from category c where c.status = 1 order by c.updated_date desc", nativeQuery = true)
+    @Query(value = "select c.* from category c ", nativeQuery = true)
     List<Category> getAllCategory();
 
-    @Query(value = "SELECT c.* from Category c where p.isActive =1 and p.id = ?1",nativeQuery = true)
-    Optional<Category> getCategoryById(Long id);
-
-    @Modifying
-    @Query(value = "update Category c set c.id = ?1 where c.status = 0", nativeQuery = true)
-    void deleteCategoryById(Long id);
+//    @Query(value = "SELECT c.* from Category c where p.isActive =1 and p.id = ?1",nativeQuery = true)
+//    Optional<Category> getCategoryById(Long id);
+//
+//    @Modifying
+//    @Query(value = "update Category c set c.id = ?1 where c.status = 0", nativeQuery = true)
+//    void deleteCategoryById(Long id);
 }
