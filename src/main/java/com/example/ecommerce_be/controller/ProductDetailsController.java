@@ -5,6 +5,7 @@ import com.example.ecommerce_be.constants.StatusCode;
 import com.example.ecommerce_be.dto.ProductDetailsDTO;
 import com.example.ecommerce_be.dto.Product_DTO;
 import com.example.ecommerce_be.entity.ProductDetails;
+import com.example.ecommerce_be.entity.Product_T;
 import com.example.ecommerce_be.service.ProductDetailsService;
 import com.example.ecommerce_be.service.Product_Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,10 @@ public class ProductDetailsController {
     @GetMapping("/getAllProductDetails")
     public ResponseEntity getAllCategory() {
         return ResponseEntity.ok(new BaseResponse(productService.getListProductDetails(),"Thành công", StatusCode.SUCCESS));
+    }
+    @GetMapping("/getBySize/{product}/{size}")
+    ResponseEntity getBySize(@PathVariable(name="product")Product_T product,@PathVariable(name = "size") String size){
+        return ResponseEntity.ok(new BaseResponse(productService.getBySize(product,size),"Thành công",StatusCode.SUCCESS));
     }
 
     /*@PutMapping("/updateProductT")

@@ -4,6 +4,7 @@ import com.example.ecommerce_be.base.BaseResponse;
 import com.example.ecommerce_be.constants.StatusCode;
 import com.example.ecommerce_be.dto.ProductDTO;
 import com.example.ecommerce_be.dto.Product_DTO;
+import com.example.ecommerce_be.entity.Category;
 import com.example.ecommerce_be.payload.ProductPayloadSearch;
 import com.example.ecommerce_be.service.ProductService;
 import com.example.ecommerce_be.service.Product_Service;
@@ -31,6 +32,20 @@ public class Product_Controller {
     @GetMapping("/getAllProducts")
     public ResponseEntity getAllProduct() {
         return ResponseEntity.ok(new BaseResponse(productService.getListProducts(),"Thành công", StatusCode.SUCCESS));
+    }
+    //Tìm bằng mã sản phẩm
+    @GetMapping("/getProductById/{id}")
+    ResponseEntity getProductById(@PathVariable(name="id") Long id){
+        return ResponseEntity.ok(new BaseResponse(productService.getProductById(id),"Thành công",StatusCode.SUCCESS));
+    }
+    //Tìm bằng tên
+    @GetMapping("/getProductByName/{name}")
+    ResponseEntity getProductByName(@PathVariable(name="name") String name){
+        return ResponseEntity.ok(new BaseResponse(productService.getProductByName(name),"Thành công",StatusCode.SUCCESS));
+    }
+    @GetMapping("/getProductByCategory/{category}")
+    ResponseEntity getProductByCategory(@PathVariable(name="category") Category category){
+        return ResponseEntity.ok(new BaseResponse(productService.getListProductByCategory(category),"Thành công",StatusCode.SUCCESS));
     }
 
     /*@PutMapping("/updateProductT")

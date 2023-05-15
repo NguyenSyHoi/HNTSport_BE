@@ -19,41 +19,46 @@ public class Product_T {
     private Long id;
 
     @Column(nullable = false, unique = true)
-    private String code;
+    private String productCode;
 
     @Column(nullable = false)
-    private String name;
+    private String productName;
 
     @Column(nullable = false)
     private String description;
 
     @Column(nullable = false)
-    private String status;
-    @Column(nullable = false)
     private String brand;
+
     @Column(nullable = false)
-    private String categoryCode;
+    private Long price;
+    @JoinColumn(name = "categoryId")
+    @ManyToOne
+    private Category category;
+
+//    @Column(nullable = false)
+//    private String status;
+
+//    @Column(nullable = false)
+//    private String categoryCode;
    // private Integer isActive;
    // @ManyToMany(targetEntity = Color.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     //@JoinTable(name = "color_product", joinColumns = @JoinColumn(name = "product_id"),
      //       inverseJoinColumns = @JoinColumn(name = "color_id"))
     //private List<Color> colors;
-   @Column(nullable = false)
-    private Long price;
+
 
     //private String image;
 
     //private String image_overlay;
 
-    //@ManyToOne
-    //@JoinColumn(name = "categoryId")
-    //private Category category;
 
-    private Date createdDate;
 
-    private Date updatedDate;
-
-    private String createdBy;
-
-    private String updatedBy;
+//    private Date createdDate;
+//
+//    private Date updatedDate;
+//
+//    private String createdBy;
+//
+//    private String updatedBy;
 }

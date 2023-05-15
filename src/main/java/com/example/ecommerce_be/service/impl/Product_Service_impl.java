@@ -6,6 +6,7 @@ import com.example.ecommerce_be.constants.Status;
 import com.example.ecommerce_be.dto.ProductDTO;
 import com.example.ecommerce_be.dto.ProductDetailsDTO;
 import com.example.ecommerce_be.dto.Product_DTO;
+import com.example.ecommerce_be.entity.Category;
 import com.example.ecommerce_be.entity.Color;
 import com.example.ecommerce_be.entity.Product;
 import com.example.ecommerce_be.entity.Product_T;
@@ -44,20 +45,30 @@ public class Product_Service_impl implements Product_Service {
         return productMapper.toDtos(productRepository.getAllProduct());
     }
 
+    @Override
+    public List<Product_DTO> getListProductByCategory(Category category) {
+        return productMapper.toDtos(productRepository.getAllProduct_ByCategory(category));
+    }
+    @Override
+    public Product_DTO getProductById(Long id){
+        return productMapper.toDto(productRepository.getProduct_ById(id).orElseThrow(() -> new NotFoundException("Product by id" + id + "not found")));
+    }
+    @Override
+    public Product_DTO getProductByName(String productName){
+        return productMapper.toDto(productRepository.getProduct_ByName(productName).orElseThrow(() -> new NotFoundException("Product by id" + productName + "not found")));
+    }
+
 
     @Override
     @Transactional
     public Product_DTO addNewProduct(Product_DTO productDTO) {
         Product_T product = productMapper.toEntity(productDTO);
-        product.setCode(productDTO.getProductCode());
-        product.setName(productDTO.getProductName());
+        product.setProductCode(productDTO.getProductCode());
+        product.setProductName(productDTO.getProductName());
         product.setDescription(productDTO.getDescription());
         product.setBrand(productDTO.getBrand());
-        product.setCategoryCode(productDTO.getCategoryCode());
+        //product.setCategory(productDTO.getCategory());
         product.setPrice(productDTO.getPrice());
-        product.setStatus(String.valueOf(Status.NEW));
-        product.setCreatedDate(new Date());
-        product.setUpdatedDate(new Date());
         return productMapper.toDto(productRepository.save(product));
     }
 

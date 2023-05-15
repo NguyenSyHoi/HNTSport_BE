@@ -4,19 +4,15 @@ package com.example.ecommerce_be.mapper;
 import com.example.ecommerce_be.dto.ProductDetailsDTO;
 import com.example.ecommerce_be.entity.ProductDetails;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 import java.util.List;
 
 @Mapper(componentModel = "spring",uses = {ColorMapper.class})
 public interface ProductDetailsMapper {
-   // @Mapping(target = "code",source = "productCode")
-    //@Mapping(target = "name",source = "productName")
-    //@Mapping(target = "colors",ignore = true)
+    @Mapping(target = "product",source = "product")
     ProductDetails toEntity(ProductDetailsDTO productDTO);
-
-   // @Mapping(target = "productCode",source = "code")
-    //@Mapping(target = "productName",source = "name")
-    //@Mapping(target = "colors",qualifiedByName = "toColorDTO")
+    @Mapping(target = "product",source = "product")
     ProductDetailsDTO toDto(ProductDetails product);
 
     List<ProductDetailsDTO> toDtos(List<ProductDetails> datas);

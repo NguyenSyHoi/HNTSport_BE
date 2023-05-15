@@ -37,24 +37,24 @@ public class CategoryService_impl implements CategoryService {
         Category category = categoryMapper.toEntity(categoryDTO);
         category.setCategoryCode(categoryDTO.getCategoryCode());
         category.setCategoryName(categoryDTO.getCategoryName());
-        category.setDescription(categoryDTO.getDescription());
-        category.setStatus(String.valueOf(Constants.ACTIVE));
-        category.setCreatedDate(new Date());
-        category.setUpdatedDate(new Date());
+//        category.setDescription(categoryDTO.getDescription());
+//        category.setStatus(String.valueOf(Constants.ACTIVE));
+//        category.setCreatedDate(new Date());
+//        category.setUpdatedDate(new Date());
         return categoryMapper.toDto(categoryRepository.save(category));
     }
 
-    @Override
-    public void deleteCategory(Long id) {
-        Optional<Category> category = checkExistCategory(id);
-        if (category.isPresent()) {
-            categoryRepository.deleteCategoryById(id);
-        } else {
-            throw new NotFoundException("Category not found");
-        }
-    }
-    
-    public Optional<Category> checkExistCategory(Long id) {
-        return categoryRepository.getCategoryById(id);
-    }
+//    @Override
+//    public void deleteCategory(Long id) {
+//        Optional<Category> category = checkExistCategory(id);
+//        if (category.isPresent()) {
+//            categoryRepository.deleteCategoryById(id);
+//        } else {
+//            throw new NotFoundException("Category not found");
+//        }
+//    }
+//
+//    public Optional<Category> checkExistCategory(Long id) {
+//        return categoryRepository.getCategoryById(id);
+//    }
 }

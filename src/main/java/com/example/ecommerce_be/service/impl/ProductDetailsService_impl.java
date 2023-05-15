@@ -1,8 +1,11 @@
 package com.example.ecommerce_be.service.impl;
 
+import com.example.ecommerce_be.base.NotFoundException;
 import com.example.ecommerce_be.constants.Status;
 import com.example.ecommerce_be.dto.ProductDetailsDTO;
+import com.example.ecommerce_be.dto.Product_DTO;
 import com.example.ecommerce_be.entity.ProductDetails;
+import com.example.ecommerce_be.entity.Product_T;
 import com.example.ecommerce_be.mapper.ProductDetailsMapper;
 import com.example.ecommerce_be.repositories.ProductDetailsRepository;
 import com.example.ecommerce_be.service.ProductDetailsService;
@@ -28,20 +31,19 @@ public class ProductDetailsService_impl implements ProductDetailsService {
     public List<ProductDetailsDTO> getListProductDetails() {
         return productMapper.toDtos(productRepository.getAllProductDetails());
     }
+    @Override
+    public ProductDetailsDTO getBySize(Product_T product, String size){
+        return productMapper.toDto(productRepository.getProductBySize(product , size));
+    }
 
 
     @Override
     @Transactional
     public ProductDetailsDTO addNewProduct(ProductDetailsDTO productDTO) {
         ProductDetails product = productMapper.toEntity(productDTO);
-        product.setProductCode(productDTO.getProductCode());
+        //product.setProductCode(productDTO.getProductCode());
         product.setSize(productDTO.getSize());
-        product.setQuantify(productDTO.getQuantity());
-        product.setNote(productDTO.getNote());
-        product.setImage(productDTO.getImage());
-        product.setStatus(String.valueOf(Status.NEW));
-        product.setCreatedDate(new Date());
-        product.setUpdatedDate(new Date());
+        product.setQuantify(productDTO.getQuantify());
         return productMapper.toDto(productRepository.save(product));
     }
 

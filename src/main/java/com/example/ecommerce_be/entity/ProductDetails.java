@@ -19,21 +19,13 @@ public class ProductDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
-    private String productCode;
-    @Column(nullable = false)
     private String size;
     @Column(nullable = false)
     private Long quantify;
     @Column(nullable = false)
-    private String note;
-    @Column(nullable = false)
     private String image;
-    private String status;
-    private Date createdDate;
-
-    private Date updatedDate;
-
-    private String createdBy;
-
-    private String updatedBy;
+    //private String status;
+    @ManyToOne
+    @JoinColumn(name = "productCode")
+    private Product_T product;
 }

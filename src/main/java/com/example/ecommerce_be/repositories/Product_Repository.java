@@ -1,5 +1,6 @@
 package com.example.ecommerce_be.repositories;
 
+import com.example.ecommerce_be.entity.Category;
 import com.example.ecommerce_be.entity.Product;
 import com.example.ecommerce_be.entity.Product_T;
 import org.springframework.data.domain.Page;
@@ -16,6 +17,12 @@ import java.util.Optional;
 public interface Product_Repository extends JpaRepository<Product_T, Long> {
     @Query(value ="SELECT p.* from products p", nativeQuery = true)
     List<Product_T> getAllProduct();
+    @Query(value ="SELECT p.* from products p where p.id = ?1", nativeQuery = true)
+    Optional<Product_T> getProduct_ById(Long id);
+    @Query(value ="SELECT p.* from products p where p.product_name like %?1%", nativeQuery = true)
+    Optional<Product_T> getProduct_ByName(String productName);
+   @Query(value ="SELECT p.* from products p where p.category_id =?1", nativeQuery = true)
+   List<Product_T> getAllProduct_ByCategory(Category category);
 
 
    // @Query("SELECT p from Product p where p.isActive =1 and p.id = ?1")
