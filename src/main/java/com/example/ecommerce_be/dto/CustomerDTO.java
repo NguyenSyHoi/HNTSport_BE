@@ -14,6 +14,6 @@ public class CustomerDTO implements Serializable {
     private Long id;
     private String name;
     private String phone;
-    private String andress;
+    private String address;
     private String email;
 }

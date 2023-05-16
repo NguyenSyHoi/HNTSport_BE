@@ -37,10 +37,7 @@ public class CategoryService_impl implements CategoryService {
         Category category = categoryMapper.toEntity(categoryDTO);
         category.setCategoryCode(categoryDTO.getCategoryCode());
         category.setCategoryName(categoryDTO.getCategoryName());
-//        category.setDescription(categoryDTO.getDescription());
-//        category.setStatus(String.valueOf(Constants.ACTIVE));
-//        category.setCreatedDate(new Date());
-//        category.setUpdatedDate(new Date());
+
         return categoryMapper.toDto(categoryRepository.save(category));
     }
 

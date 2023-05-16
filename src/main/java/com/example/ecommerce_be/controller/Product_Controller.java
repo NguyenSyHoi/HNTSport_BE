@@ -13,7 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@RestController("Product_Controller")
 @RequestMapping(path = "api/productT")
 public class Product_Controller {
     @Autowired

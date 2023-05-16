@@ -26,5 +26,4 @@ public class CategoryController {
     public ResponseEntity deleteCategory(@PathVariable(name = "id") Long id){
         return  ResponseEntity.ok(new BaseResponse(null,"Thành công",StatusCode.SUCCESS));
     }
-
 }

@@ -41,8 +41,8 @@ public class CustomerService_impl implements CustomerService {
         Customer customer = cutomerMapper.toEntity(customerDTO);
         customer.setName(customerDTO.getName());
         customer.setPhone(customerDTO.getPhone());
-        customer.setAndress(customerDTO.getAndress());
         customer.setEmail(customerDTO.getEmail());
+        customer.setAddress(customerDTO.getAddress());
         return cutomerMapper.toDto(customerRepository.save(customer));
 
     }

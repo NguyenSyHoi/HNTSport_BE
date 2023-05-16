@@ -4,6 +4,7 @@ import com.example.ecommerce_be.base.BaseResponse;
 import com.example.ecommerce_be.constants.StatusCode;
 import com.example.ecommerce_be.dto.AccountDTO;
 import com.example.ecommerce_be.dto.CustomerDTO;
+import com.example.ecommerce_be.entity.Account;
 import com.example.ecommerce_be.service.AccountService;
 import com.example.ecommerce_be.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +25,13 @@ public class AccountController {
     @PostMapping("/addAccount")
     @ResponseBody
     ResponseEntity addNewAccount(@RequestBody AccountDTO accountDTO){
-        return ResponseEntity.ok(new BaseResponse(accountService.addNewAccount(accountDTO),"Thêm mới sản phẩm thành công",StatusCode.SUCCESS));
+        return ResponseEntity.ok(new BaseResponse(accountService.addNewAccount(accountDTO),"Thêm mới tài khoản",StatusCode.SUCCESS));
     }
     @GetMapping("/getAllAccout")
     public ResponseEntity getAllAccount() {
         return ResponseEntity.ok(new BaseResponse(accountService.getListAccount(),"Thành công", StatusCode.SUCCESS));
     }
+
 
     /*@PutMapping("/updateProductT")
     @ResponseBody
