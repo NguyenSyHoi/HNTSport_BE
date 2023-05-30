@@ -32,6 +32,8 @@ public class Product_T {
 
     @Column(nullable = false)
     private Long price;
+    @Column(nullable = false)
+    private Long image;
     @JoinColumn(name = "categoryId")
     @ManyToOne
     private Category category;

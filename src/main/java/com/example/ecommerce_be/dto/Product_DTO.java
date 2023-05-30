@@ -21,6 +21,7 @@ public class Product_DTO implements Serializable {
     private String brand;
     //private String status;
     private Long price;
+    private String image;
     //@ManyToOne
     private CategoryDTO category;
 //    private Date createdDate;
